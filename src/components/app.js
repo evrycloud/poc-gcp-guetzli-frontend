@@ -1,12 +1,13 @@
 import { h, Component } from 'preact';
+import { connect } from 'preact-redux';
 import { Router } from 'preact-router';
 
 import Header from './header';
 import Home from '../routes/home';
-import Profile from '../routes/profile';
-// import Home from 'async!./home';
-// import Profile from 'async!./profile';
 
+@connect(state => ({
+    data: state.data
+}))
 export default class App extends Component {
     /** Gets fired when the route changes.
      *  @param {Object} event       "change" event from [preact-router](http://git.io/preact-router)
@@ -17,11 +18,13 @@ export default class App extends Component {
     };
 
     render() {
+        const { data } = this.props;
+
         return (
             <div id="app">
-                <Header />
+                <Header title={data.title} />
                 <Router onChange={this.handleRoute}>
-                    <Home path="/" />
+                    <Home path="/" {...data} />
                 </Router>
             </div>
         );
