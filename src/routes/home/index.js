@@ -82,53 +82,38 @@ export default class Home extends Component {
         } = this.state;
 
         return (
-            <Container style={{ marginTop: '3em' }}>
-                <Grid divided='vertically'>
-                    <Grid.Row columns={2}>
-                        <Grid.Column>
-                            <h1><Icon name="cloud upload" /> Upload images</h1>
+            <Grid divided='vertically'>
+                <Grid.Row columns={2}>
+                    <Grid.Column>
+                        <h1><Icon name="cloud upload" /> Upload images</h1>
 
-                            <p>This service is using Google Cloud Platform.</p>
+                        <Form onSubmit={this.onSubmit}>
+                            <Form.Group widths='equal'>
+                                <Form.Input
+                                    onChange={this.onImageChange}
+                                    icon="cloud upload"
+                                    type="file"
+                                    placeholder="Search..."
+                                    multiple
+                                />
+                            </Form.Group>
 
-                            <p>Steps:</p>
+                             <Form.Group>
+                                <Form.Button
+                                    loading={uploading}
+                                    size="big"
+                                >
+                                    Submit
+                                </Form.Button>
+                            </Form.Group>
+                        </Form>
+                    </Grid.Column>
 
-                            <ul>
-                                <li>Upload images to a bucket</li>
-                                <li>PubSub event sent to worker with information about the new images</li>
-                                <li>Compress the images by using Guetzli</li>
-                                <li>Publish an event for finished images</li>
-                                <li>Move the compressed images to a new bucket</li>
-                            </ul>
-
-                            <Form onSubmit={this.onSubmit}>
-                                <h2>Choose a file to upload</h2>
-                                <Form.Group widths='equal'>
-                                    <Form.Input
-                                        onChange={this.onImageChange}
-                                        icon="cloud upload"
-                                        type="file"
-                                        placeholder="Search..."
-                                        multiple
-                                    />
-                                </Form.Group>
-
-                                <Form.Group>
-                                    <Form.Button
-                                        loading={uploading}
-                                        size="big"
-                                    >
-                                        Submit
-                                    </Form.Button>
-                                </Form.Group>
-                            </Form>
-                        </Grid.Column>
-
-                        <Grid.Column>
-                            <Notifications notifications={notifications} />
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
-            </Container>
+                    <Grid.Column>
+                        <Notifications notifications={notifications} />
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid>
         );
     }
 }
