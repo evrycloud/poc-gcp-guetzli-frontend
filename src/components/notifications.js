@@ -1,6 +1,6 @@
 import { h, Component } from 'preact';
 import { List, Icon } from 'semantic-ui-react'
-// import style from './style';
+import style from './style';
 
 export default class Notifications extends Component {
     getIcon(status) {
@@ -21,7 +21,7 @@ export default class Notifications extends Component {
         return (
             <aside>
                 <h1><Icon name="feed" /> Activity</h1>
-                <List divided relaxed>
+                <List className={style.activityList} divided relaxed>
                     {notifications && notifications.map(({ name, status }) => (
                         <List.Item>
                             <List.Icon name={this.getIcon(status)} size="large" verticalAlign="middle" />

@@ -1,0 +1,4 @@
+.activityList {
+    max-height: 190px;
+    overflow-y: scroll;
+}
