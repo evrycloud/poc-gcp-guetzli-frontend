@@ -23,11 +23,14 @@
     "preact-cli": "^1.4.1"
   },
   "dependencies": {
-    "feather-icons": "^3.2.2",
     "instantly": "^1.4.1",
     "isomorphic-fetch": "^2.2.1",
     "preact": "^8.2.1",
     "preact-compat": "^3.17.0",
-    "preact-router": "^2.5.7"
+    "preact-router": "^2.5.7",
+    "react-feather": "^1.0.7",
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.73.0",
+    "unfetch": "^3.0.0"
   }
 }

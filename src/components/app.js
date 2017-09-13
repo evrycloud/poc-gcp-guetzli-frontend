@@ -1,5 +1,6 @@
 import { h, Component } from 'preact';
 import { Router } from 'preact-router';
+import 'semantic-ui-css/semantic.min.css';
 
 import Header from './header';
 import Home from '../routes/home';
