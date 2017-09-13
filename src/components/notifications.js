@@ -1,6 +1,5 @@
 import { h, Component } from 'preact';
-import { Activity } from 'react-feather';
-import { List } from 'semantic-ui-react'
+import { List, Icon } from 'semantic-ui-react'
 // import style from './style';
 
 export default class Notifications extends Component {
@@ -21,7 +20,7 @@ export default class Notifications extends Component {
 
         return (
             <aside>
-                <h1><Activity /> Progress</h1>
+                <h1><Icon name="feed" /> Activity</h1>
                 <List divided relaxed>
                     {notifications && notifications.map(({ name, status }) => (
                         <List.Item>
