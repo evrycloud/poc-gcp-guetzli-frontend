@@ -1,9 +1,10 @@
 import { h, Component } from 'preact';
 import fetch from 'unfetch';
 import Instantly from 'instantly';
+import chunk from 'lodash.chunk';
 import style from './style';
 
-import { Container, Form, Grid, Icon } from 'semantic-ui-react';
+import { Container, Form, Grid, Icon, Image } from 'semantic-ui-react';
 
 import Notifications from '../../components/notifications';
 
@@ -11,11 +12,15 @@ export default class Home extends Component {
     state = {
         files: [],
         notifications: [],
+        images: [],
         uploading: false,
     };
 
+    // All fetching logic should be moved to redux
     componentDidMount() {
         this.listenSSE();
+
+        this.getImages();
     }
 
     listenSSE() {
@@ -36,6 +41,16 @@ export default class Home extends Component {
         });
 
         es.listen();
+    }
+
+    getImages = async () => {
+        const res = await fetch('http://localhost:1337/images/list');
+
+        const images = await res.json();
+
+        this.setState({
+            images
+        });
     }
 
     onImageChange = (event) => {
@@ -65,8 +80,6 @@ export default class Home extends Component {
                 body: data
             });
 
-            this.clearInput();
-
             this.setState({
                 uploading: false,
             })
@@ -78,8 +91,11 @@ export default class Home extends Component {
     render() {
         const {
             notifications,
-            uploading
+            uploading,
+            images
         } = this.state;
+
+        const chunks = chunk(images, 9);
 
         return (
             <Grid divided='vertically'>
@@ -93,7 +109,7 @@ export default class Home extends Component {
                                     onChange={this.onImageChange}
                                     icon="cloud upload"
                                     type="file"
-                                    placeholder="Search..."
+                                    placeholder="Upload..."
                                     multiple
                                 />
                             </Form.Group>
@@ -113,6 +129,22 @@ export default class Home extends Component {
                         <Notifications notifications={notifications} />
                     </Grid.Column>
                 </Grid.Row>
+
+                <Grid.Row columns={1}>
+                    <Grid.Column>
+                        <h2><Icon name='image' size='large' /> Compressed images</h2>
+                    </Grid.Column>
+                </Grid.Row>
+
+                {chunks.map(chunk => (
+                    <Grid.Row columns={9}>
+                        {chunk.map(({ mediaLink }) => (
+                            <Grid.Column>
+                                <Image src={mediaLink} href={mediaLink} shape="rounded" size="small" />
+                            </Grid.Column>
+                        ))}
+                    </Grid.Row>
+                ))}
             </Grid>
         );
     }

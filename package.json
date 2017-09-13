@@ -25,6 +25,7 @@
   "dependencies": {
     "instantly": "^1.4.1",
     "isomorphic-fetch": "^2.2.1",
+    "lodash.chunk": "^4.2.0",
     "preact": "^8.2.1",
     "preact-compat": "^3.17.0",
     "preact-router": "^2.5.7",
