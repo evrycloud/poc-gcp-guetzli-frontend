@@ -132,7 +132,7 @@ export default class Home extends Component {
 
                 <Grid.Row columns={1}>
                     <Grid.Column>
-                        <h2><Icon name='image' size='large' /> Compressed images</h2>
+                        <h2><Icon name="image" /> Compressed images</h2>
                     </Grid.Column>
                 </Grid.Row>
 
