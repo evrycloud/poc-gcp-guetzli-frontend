@@ -3,7 +3,7 @@ import fetch from 'unfetch';
 import Instantly from 'instantly';
 import style from './style';
 
-import { Form, Grid } from 'semantic-ui-react';
+import { Container, Form, Grid, Icon } from 'semantic-ui-react';
 
 import Notifications from '../../components/notifications';
 
@@ -82,11 +82,11 @@ export default class Home extends Component {
         } = this.state;
 
         return (
-            <div class={style.home}>
+            <Container style={{ marginTop: '3em' }}>
                 <Grid divided='vertically'>
                     <Grid.Row columns={2}>
                         <Grid.Column>
-                            <h1>Upload images</h1>
+                            <h1><Icon name="cloud upload" /> Upload images</h1>
 
                             <p>This service is using Google Cloud Platform.</p>
 
@@ -95,32 +95,32 @@ export default class Home extends Component {
                             <ul>
                                 <li>Upload images to a bucket</li>
                                 <li>PubSub event sent to worker with information about the new images</li>
-                                <li>Compress them by using Guetzli</li>
+                                <li>Compress the images by using Guetzli</li>
                                 <li>Publish an event for finished images</li>
                                 <li>Move the compressed images to a new bucket</li>
                             </ul>
 
-                            <section>
-                                <Form onSubmit={this.onSubmit}>
-                                    <h2>Choose a file to upload</h2>
-                                    <Form.Group widths='equal'>
-                                        <Form.Input
-                                            onChange={this.onImageChange}
-                                            icon="cloud upload"
-                                            type="file"
-                                            placeholder="Search..."
-                                            multiple
-                                        />
-                                    </Form.Group>
+                            <Form onSubmit={this.onSubmit}>
+                                <h2>Choose a file to upload</h2>
+                                <Form.Group widths='equal'>
+                                    <Form.Input
+                                        onChange={this.onImageChange}
+                                        icon="cloud upload"
+                                        type="file"
+                                        placeholder="Search..."
+                                        multiple
+                                    />
+                                </Form.Group>
 
-                                    <Form.Group>
-                                        <Form.Button
-                                            loading={uploading}
-                                            size="big">Submit
-                                        </Form.Button>
-                                    </Form.Group>
-                                </Form>
-                            </section>
+                                <Form.Group>
+                                    <Form.Button
+                                        loading={uploading}
+                                        size="big"
+                                    >
+                                        Submit
+                                    </Form.Button>
+                                </Form.Group>
+                            </Form>
                         </Grid.Column>
 
                         <Grid.Column>
@@ -128,7 +128,7 @@ export default class Home extends Component {
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
-            </div>
+            </Container>
         );
     }
 }
