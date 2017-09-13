@@ -1,6 +1,6 @@
 {
-  "name": "Preact PWA",
-  "short_name": "Preact PWA",
+  "name": "Guetzli Demo",
+  "short_name": "Guetzli Demo",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
