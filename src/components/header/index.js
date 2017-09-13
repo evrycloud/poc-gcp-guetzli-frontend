@@ -1,6 +1,6 @@
 import { h, Component } from 'preact';
 import { Link } from 'preact-router/match';
-import { Icon } from 'semantic-ui-react'
+import { Container, Menu } from 'semantic-ui-react'
 
 import style from './style';
 
@@ -8,10 +8,14 @@ export default class Header extends Component {
     render() {
         return (
             <header class={style.header}>
-                <h1>{this.props.title}</h1>
-                <nav>
-                    <Link activeClassName={style.active} href="/"><Icon name="home" size="large" /></Link>
-                </nav>
+                <Menu fixed='top' defaultActiveIndex={1} inverted>
+                    <Container>
+                        <Menu.Item as='a' header>
+                            Guetzli
+                        </Menu.Item>
+                        <Menu.Item as='a' active>Home</Menu.Item>
+                    </Container>
+                </Menu>
             </header>
         );
     }
