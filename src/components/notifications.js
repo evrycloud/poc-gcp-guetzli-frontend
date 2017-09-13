@@ -27,7 +27,7 @@ export default class Notifications extends Component {
                             <List.Icon name={this.getIcon(status)} size="large" verticalAlign="middle" />
                             <List.Content>
                                 <List.Header as="a">{name}</List.Header>
-                                <List.Description as="a">Status: {status}</List.Description>
+                                <List.Description as="a">Status: <strong>{status}</strong></List.Description>
                             </List.Content>
                         </List.Item>
                     ))}
