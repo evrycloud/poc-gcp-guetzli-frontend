@@ -1,0 +1,6 @@
+dispatch:
+  - url: "api-guetzli-179112.appspot.com"
+    service: api
+
+  - url "guetzli-179112.appspot.com"
+    service: default
