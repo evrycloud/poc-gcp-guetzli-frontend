@@ -117,7 +117,7 @@ export default class Home extends Component {
                              <Form.Group>
                                 <Form.Button
                                     loading={uploading}
-                                    size="big"
+                                    size="small"
                                 >
                                     Submit
                                 </Form.Button>
