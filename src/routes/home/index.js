@@ -135,10 +135,10 @@ export default class Home extends Component {
                     </Grid.Column>
                 </Grid.Row>
 
-                {chunks.map(chunk => (
-                    <Grid.Row columns={9}>
-                        {chunk.map(({ mediaLink }) => (
-                            <Grid.Column>
+                {chunks.map((chunk, i) => (
+                    <Grid.Row columns={9} key={i}>
+                        {chunk.map(({ mediaLink }, k) => (
+                            <Grid.Column key={k}>
                                 <Image src={mediaLink} href={mediaLink} shape="rounded" size="small" />
                             </Grid.Column>
                         ))}

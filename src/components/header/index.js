@@ -15,13 +15,14 @@ export default class Header extends Component {
         const { activeItem } = this.state
 
         return (
-            <header class={style.header}>
+            <header className={style.header}>
                 <Menu fixed='top' defaultActiveIndex={1} inverted>
                     <Container>
                         <Menu.Item as='a' header>
                             Guetzli
                         </Menu.Item>
                         <Menu.Item
+                            as='span'
                             name="home"
                             active={activeItem === "home"}
                             onClick={this.handleItemClick}
@@ -29,6 +30,7 @@ export default class Header extends Component {
                             <Link to="/">Home</Link>
                         </Menu.Item>
                         <Menu.Item
+                            as='span'
                             name="information"
                             active={activeItem === "information"}
                             onClick={this.handleItemClick}
