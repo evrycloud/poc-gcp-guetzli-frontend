@@ -1,5 +1,5 @@
-import { h, Component } from 'preact';
-import { Grid, Icon } from 'semantic-ui-react';
+import React, { Component } from 'react';
+import { Grid } from 'semantic-ui-react';
 
 export default class Information extends Component {
     render() {

@@ -1,10 +1,9 @@
-import { h, Component } from 'preact';
+import React, { Component } from 'react';
 import fetch from 'unfetch';
 import Instantly from 'instantly';
 import chunk from 'lodash.chunk';
-import style from './style';
 
-import { Container, Form, Grid, Icon, Image } from 'semantic-ui-react';
+import { Form, Grid, Icon, Image } from 'semantic-ui-react';
 
 import Notifications from '../../components/notifications';
 
@@ -136,10 +135,10 @@ export default class Home extends Component {
                     </Grid.Column>
                 </Grid.Row>
 
-                {chunks.map(chunk => (
-                    <Grid.Row columns={9}>
-                        {chunk.map(({ mediaLink }) => (
-                            <Grid.Column>
+                {chunks.map((chunk, i) => (
+                    <Grid.Row columns={9} key={i}>
+                        {chunk.map(({ mediaLink }, k) => (
+                            <Grid.Column key={k}>
                                 <Image src={mediaLink} href={mediaLink} shape="rounded" size="small" />
                             </Grid.Column>
                         ))}

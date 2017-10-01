@@ -1,5 +1,5 @@
-import { h, Component } from 'preact';
-import { Router } from 'preact-router';
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
@@ -7,26 +7,17 @@ import Header from './header';
 import Home from '../routes/home';
 import Information from '../routes/information';
 
-export default class App extends Component {
-    /** Gets fired when the route changes.
-     *  @param {Object} event       "change" event from [preact-router](http://git.io/preact-router)
-     *  @param {string} event.url   The newly routed URL
-     */
-    handleRoute = e => {
-        this.currentUrl = e.url;
-    };
+const App = () => (
+    <BrowserRouter>
+        <Container style={{ marginTop: '4em' }}>
+            <Header title="Guetzli PoC" />
 
-    render() {
-        const { data } = this.props;
+            <Switch>
+                <Route path="/" component={Home} />
+                <Route path="/information" component={Information} />
+            </Switch>
+        </Container>
+    </BrowserRouter>
+);
 
-        return (
-            <Container style={{ marginTop: '4em' }}>
-                <Header title={'Guetzli PoC'} />
-                <Router onChange={this.handleRoute}>
-                    <Home path="/" />
-                    <Information path="/information" />
-                </Router>
-            </Container>
-        );
-    }
-}
+export default App;

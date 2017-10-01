@@ -1,6 +1,6 @@
-import { h, Component } from 'preact';
+import React, { Component } from 'react';
 import { List, Icon } from 'semantic-ui-react'
-import style from './style';
+import style from './style.css';
 
 export default class Notifications extends Component {
     getIcon(status) {
