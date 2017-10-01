@@ -24,7 +24,7 @@ export default class Home extends Component {
     }
 
     listenSSE() {
-        const es = new Instantly('https://api-dot-guetzli-179112.appspot.com/notification');
+        const es = new Instantly('http://localhost:1337/notification');
 
         es.on('message', msg => {
             const { notifications } = this.state;
@@ -44,7 +44,7 @@ export default class Home extends Component {
     }
 
     getImages = async () => {
-        const res = await fetch('https://api-dot-guetzli-179112.appspot.com/images/list');
+        const res = await fetch('http://localhost:1337/images/list');
 
         const images = await res.json();
 
@@ -75,7 +75,7 @@ export default class Home extends Component {
                 uploading: true
             });
 
-            await fetch('https://api-dot-guetzli-179112.appspot.com/images/upload', {
+            await fetch('http://localhost:1337/images/upload', {
                 method: 'POST',
                 body: data
             });
