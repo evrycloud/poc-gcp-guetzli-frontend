@@ -1,10 +1,9 @@
-import { h, Component } from 'preact';
+import React, { Component } from 'react';
 import fetch from 'unfetch';
 import Instantly from 'instantly';
 import chunk from 'lodash.chunk';
-import style from './style';
 
-import { Container, Form, Grid, Icon, Image } from 'semantic-ui-react';
+import { Form, Grid, Icon, Image } from 'semantic-ui-react';
 
 import Notifications from '../../components/notifications';
 

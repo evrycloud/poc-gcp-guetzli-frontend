@@ -1,8 +1,8 @@
-import { h, Component } from 'preact';
-import { Link } from 'preact-router/match';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Menu } from 'semantic-ui-react'
 
-import style from './style';
+import style from './style.css';
 
 export default class Header extends Component {
     state = {
@@ -26,14 +26,14 @@ export default class Header extends Component {
                             active={activeItem === "home"}
                             onClick={this.handleItemClick}
                         >
-                            <Link href="/">Home</Link>
+                            <Link to="/">Home</Link>
                         </Menu.Item>
                         <Menu.Item
                             name="information"
                             active={activeItem === "information"}
                             onClick={this.handleItemClick}
                         >
-                            <Link href="/information">Information</Link>
+                            <Link to="/information">Information</Link>
                         </Menu.Item>
                     </Container>
                 </Menu>
